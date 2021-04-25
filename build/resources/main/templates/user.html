@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="navbar">
+
+    <a href="/signup">Sign Up</a>
+    <a href="/login">login</a>
+    <a href="/userprofile">My profile</a>
+</div>
+<h2>Welcome to <span th:text="${user.username}"/>'s profile ....</h2>
+<img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
+<h2 th:text="${user.firstName}"></h2>
+<h2 th:text="${user.lastName}"></h2>
+<h2 th:text="${user.bio}"></h2>
+<h2 th:text="${user.dateOfBirth}"></h2>
+
+
+</body>
+</html>

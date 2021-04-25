@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+<div class="navbar">
+
+    <a href="/userprofile">My profile</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">login</a>
+</div>
+
+
+
+<div class="testbox">
+    <form method="POST" action="/signup">
+
+        <h1>Signup in CodeFellowship</h1>
+
+        <h4>User name<span>*</span></h4>
+        <input id="username" name="username" type="text">
+
+        <h4>password<span>*</span></h4>
+        <input id="password" name="password" type="password">
+
+        <h4>First Name<span>*</span></h4>
+        <input type="text" name="firstName" id="firstName"/>
+
+        <h4>Last Name<span>*</span></h4>
+        <input type="text" name="lastName" id="lastName"/>
+
+        <h4>Date of birth<span>*</span></h4>
+        <input type="date" name="dateOfBirth" id="dateOfBirth"/>
+
+
+        <h4>Bio<span>*</span></h4>
+        <input type="text" name="bio" id="bio"/>
+
+        <div class="btn-block">
+
+            <input class="button" type="submit" value="Sign up">
+
+        </div>
+    </form>
+</div>
+</body>
+</html>
