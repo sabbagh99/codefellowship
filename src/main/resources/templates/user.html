@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div th:insert="header :: header">...</div>
+
+<h2>Welcome to <span th:text="${user.username}"/>'s profile ....</h2>
+<img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
+
+<div style="display: flex;">
+    <h2> First name : <h2 th:text="${user.firstName}"></h2></h2>
+</div>
+<div style="display: flex;">
+    <h2>Last name : <h2 th:text="${user.lastName}"></h2></h2>
+</div>
+<div style="display: flex;">
+    <h2> Bio : <h2 th:text="${user.bio}"></h2></h2>
+</div>
+<div style="display: flex;">
+    <h2> Data of birth : <h2 th:text="${user.dateOfBirth}"></h2></h2>
+</div>
+<!--th:if="${isAllowedToEdit == true}"-->
+<form  action="/userprofile" method="POST">
+
+    <h1>write a post </h1>
+
+    <h4>body<span>*</span></h4>
+    <input type='text' name="body">
+    <input name="id" type="text" th:value="${user.id}">
+
+    <input class="button" type="submit" value="Post">
+
+
+</form>
+<h2> All posts </h2>
+<div th:each="post:${posts}">
+
+    <h2 th:text="${post.body}"></h2>
+
+</div>
+</body>
+</html>

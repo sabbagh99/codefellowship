@@ -1,0 +1,2 @@
+com/codefellowship/codefellowship/CodefellowshipApplicationTests.java
+ com.codefellowship.codefellowship.CodefellowshipApplicationTests
