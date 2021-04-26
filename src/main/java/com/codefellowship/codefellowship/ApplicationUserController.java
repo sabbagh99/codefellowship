@@ -24,6 +24,8 @@ public class ApplicationUserController {
     ApplicationUserRepository applicationUserRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    PostReppsitory postReppsitory;
 
     @GetMapping("/signup")
     public String getSignUpPage() {
@@ -51,15 +53,25 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/userprofile")
-    public String getUserProfilePage(Principal p, Model m) {
+    public String getUserProfilePage(Principal p, Model m ) {
         m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
+//         m.addAttribute("posts", postReppsitory.findAll());
         return "user.html";
     }
-
     @GetMapping("/userprofile/{id}")
-    public ResponseEntity<ApplicationUserModel> getAlbumById(@PathVariable(value = "id") Integer id) {
-        ApplicationUserModel album = applicationUserRepository.findById(id)
-                                                              .get();
-        return new ResponseEntity(album, HttpStatus.OK);
+    public String getAllInfo(Principal p, Model m, @PathVariable(required =false) Integer id) {
+        ApplicationUserModel requiredProfile = applicationUserRepository.findById(id).get();
+        if(requiredProfile != null){
+            m.addAttribute("allInfo", requiredProfile);
+            String loggedInUserName= p.getName();
+            ApplicationUserModel loggedInUser = applicationUserRepository.findByUsername(loggedInUserName);
+            boolean isAllowedToEdit = loggedInUser.getId() == id;
+            m.addAttribute("isAllowedToEdit",isAllowedToEdit);
+
+            m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
+            m.addAttribute("posts", postReppsitory.findById(id).get());
+            return "user.html";
+        }
+        return "user.html";
     }
 }

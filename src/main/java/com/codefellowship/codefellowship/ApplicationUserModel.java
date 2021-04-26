@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+
 @Entity
 public class ApplicationUserModel implements UserDetails {
     @Id
@@ -17,10 +19,10 @@ public class ApplicationUserModel implements UserDetails {
     private String lastName;
     private String firstName;
     private String dateOfBirth;
-
+    @OneToMany (mappedBy = "applicationUserModel", cascade = CascadeType.ALL)
+    private List<PostModel> postModel;
     public ApplicationUserModel() {
     }
-
     public ApplicationUserModel(String username, String password, String bio, String dateOfBirth, String lastName, String firstName) {
         this.username = username;
         this.password = password;
@@ -108,6 +110,10 @@ public class ApplicationUserModel implements UserDetails {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public List<PostModel> getPostModel() {
+        return postModel;
     }
 
     @Override
