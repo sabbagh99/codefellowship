@@ -1,8 +1,6 @@
 package com.codefellowship.codefellowship;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,15 +15,16 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
-public class ApplicationUserController {
+public class ApplicationUserController<T> {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
     PostReppsitory postReppsitory;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/signup")
     public String getSignUpPage() {
@@ -53,23 +52,36 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/userprofile")
-    public String getUserProfilePage(Principal p, Model m ) {
+    public String getUserProfilePage(Principal p, Model m) {
         m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
-//         m.addAttribute("posts", postReppsitory.findAll());
+//         m.addAttribute("posts", applicationUserRepository.findAll());
         return "user.html";
     }
+
     @GetMapping("/userprofile/{id}")
-    public String getAllInfo(Principal p, Model m, @PathVariable(required =false) Integer id) {
-        ApplicationUserModel requiredProfile = applicationUserRepository.findById(id).get();
-        if(requiredProfile != null){
-            m.addAttribute("allInfo", requiredProfile);
-            String loggedInUserName= p.getName();
+    public String getAllInfo(Principal p, Model m, @PathVariable Integer id) {
+        ApplicationUserModel requiredProfile = applicationUserRepository.findById(id)
+                                                                        .get();
+        if (requiredProfile != null) {
+            m.addAttribute("user", requiredProfile);
+            String loggedInUserName = p.getName();
             ApplicationUserModel loggedInUser = applicationUserRepository.findByUsername(loggedInUserName);
             boolean isAllowedToEdit = loggedInUser.getId() == id;
-            m.addAttribute("isAllowedToEdit",isAllowedToEdit);
+            m.addAttribute("isAllowedToEdit", isAllowedToEdit);
+//            PostModel requiredPost = postReppsitory.findById(loggedInUser.getId())
+//                                                   .get();
+//            String body = requiredPost.getBody();
+//            m.addAttribute("posts", body);
 
-            m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
-            m.addAttribute("posts", postReppsitory.findById(id).get());
+//            m.addAttribute("posts", postReppsitory.findAll());
+            List<PostModel> requiredPostTwo =  postReppsitory.findAllByApplicationUserModelId(id);
+
+            System.out.println(requiredPostTwo);
+            //            System.out.println(requiredPostTwo);
+//            String bodyTwo = requiredPostTwo.getBody();
+//            m.addAttribute("postsTwo", bodyTwo);
+            m.addAttribute("posts", requiredPostTwo);
+
             return "user.html";
         }
         return "user.html";

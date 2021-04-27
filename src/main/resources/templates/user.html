@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 
 </head>
 <body>
@@ -24,23 +24,27 @@
 <div style="display: flex;">
     <h2> Data of birth : <h2 th:text="${user.dateOfBirth}"></h2></h2>
 </div>
+<!--<h2> Bio : <h2 th:text="${user}"></h2></h2>-->
 <!--th:if="${isAllowedToEdit == true}"-->
-<form  action="/userprofile" method="POST">
+<form action="/userprofile" method="POST">
 
     <h1>write a post </h1>
 
     <h4>body<span>*</span></h4>
     <input type='text' name="body">
-    <input name="id" type="text" th:value="${user.id}">
+    <input name="id" type="hidden" th:value="${user.id}">
 
     <input class="button" type="submit" value="Post">
 
 
 </form>
 <h2> All posts </h2>
-<div th:each="post:${posts}">
 
-    <h2 th:text="${post.body}"></h2>
+<div  th:each="post:${posts}">
+
+
+<h2 th:text="${post.body}"></h2>
+
 
 </div>
 </body>
