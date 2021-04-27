@@ -31,6 +31,15 @@ public class ApplicationUserModel implements UserDetails {
         this.lastName = lastName;
         this.firstName = firstName;
     }
+    public ApplicationUserModel(String username, String password, String bio, String dateOfBirth, String lastName, String firstName,List<PostModel> postModel) {
+        this.username = username;
+        this.password = password;
+        this.bio = bio;
+        this.dateOfBirth = dateOfBirth;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.postModel= postModel;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
