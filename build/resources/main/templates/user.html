@@ -10,6 +10,12 @@
 <div th:insert="header :: header">...</div>
 
 <h2>Welcome to <span th:text="${user.username}"/>'s profile ....</h2>
+
+<form action="/userprofile/{id}" method="post">
+    <input name="id" type="text" th:value="${user.id}">
+
+    <input class="button" type="submit" value="Follow">
+</form>
 <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
 
 <div style="display: flex;">

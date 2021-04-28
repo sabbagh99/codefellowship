@@ -21,6 +21,23 @@ public class ApplicationUserModel implements UserDetails {
     private String dateOfBirth;
     @OneToMany (mappedBy = "applicationUserModel", cascade = CascadeType.ALL)
     private List<PostModel> postModel;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="Following",
+            joinColumns=@JoinColumn(name="user_Id"),
+            inverseJoinColumns=@JoinColumn(name="follow_Id")
+    )
+    private List<ApplicationUserModel> user_Id;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="Following",
+            joinColumns=@JoinColumn(name="follow_Id"),
+            inverseJoinColumns=@JoinColumn(name="user_Id")
+    )
+    private List<ApplicationUserModel> follow_Id;
+
+
+
     public ApplicationUserModel() {
     }
     public ApplicationUserModel(String username, String password, String bio, String dateOfBirth, String lastName, String firstName) {
@@ -39,6 +56,26 @@ public class ApplicationUserModel implements UserDetails {
         this.lastName = lastName;
         this.firstName = firstName;
         this.postModel= postModel;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<ApplicationUserModel> getUser_Id() {
+        return user_Id;
+    }
+
+    public void setUser_Id(List<ApplicationUserModel> user_Id) {
+        this.user_Id = user_Id;
+    }
+
+    public List<ApplicationUserModel> getFollow_Id() {
+        return follow_Id;
+    }
+
+    public void setFollow_Id(List<ApplicationUserModel> follow_Id) {
+        this.follow_Id = follow_Id;
     }
 
     @Override

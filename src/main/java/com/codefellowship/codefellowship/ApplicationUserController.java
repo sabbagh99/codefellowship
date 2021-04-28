@@ -54,7 +54,6 @@ public class ApplicationUserController<T> {
     @GetMapping("/userprofile")
     public String getUserProfilePage(Principal p, Model m) {
         m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
-//         m.addAttribute("posts", applicationUserRepository.findAll());
         return "user.html";
     }
 
@@ -68,22 +67,30 @@ public class ApplicationUserController<T> {
             ApplicationUserModel loggedInUser = applicationUserRepository.findByUsername(loggedInUserName);
             boolean isAllowedToEdit = loggedInUser.getId() == id;
             m.addAttribute("isAllowedToEdit", isAllowedToEdit);
-//            PostModel requiredPost = postReppsitory.findById(loggedInUser.getId())
-//                                                   .get();
-//            String body = requiredPost.getBody();
-//            m.addAttribute("posts", body);
-
-//            m.addAttribute("posts", postReppsitory.findAll());
-            List<PostModel> requiredPostTwo =  postReppsitory.findAllByApplicationUserModelId(id);
-
-            System.out.println(requiredPostTwo);
-            //            System.out.println(requiredPostTwo);
-//            String bodyTwo = requiredPostTwo.getBody();
-//            m.addAttribute("postsTwo", bodyTwo);
+            List<PostModel> requiredPostTwo = postReppsitory.findAllByApplicationUserModelId(id);
             m.addAttribute("posts", requiredPostTwo);
-
             return "user.html";
         }
         return "user.html";
     }
+
+    @PostMapping("/userprofile/{id}")
+    public RedirectView getFollow(Principal p, @RequestParam(name = "id") Integer id) {
+        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        ApplicationUserModel followedUser = applicationUserRepository.findById(id)
+                                                                     .get();
+        currentUser.getUser_Id()
+                   .add(followedUser);
+        applicationUserRepository.save(currentUser);
+        return new RedirectView("/userprofile");
+    }
+
+//    @GetMapping("/feed")
+//    public String getAll(Model m, Principal p) {
+//        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+//
+//        ApplicationUserModel allInfo = applicationUserRepository.findAllById(currentUser.getUser_Id());
+//
+//    }
+
 }
