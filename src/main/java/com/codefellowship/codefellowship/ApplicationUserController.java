@@ -20,7 +20,7 @@ import java.util.List;
 @Controller
 public class ApplicationUserController<T> {
     @Autowired
-    ApplicationUserRepository applicationUserRepository;
+    public ApplicationUserRepository applicationUserRepository;
     @Autowired
     PostReppsitory postReppsitory;
     @Autowired
@@ -74,23 +74,45 @@ public class ApplicationUserController<T> {
         return "user.html";
     }
 
-    @PostMapping("/userprofile/{id}")
-    public RedirectView getFollow(Principal p, @RequestParam(name = "id") Integer id) {
-        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
-        ApplicationUserModel followedUser = applicationUserRepository.findById(id)
-                                                                     .get();
-        currentUser.getUser_Id()
-                   .add(followedUser);
-        applicationUserRepository.save(currentUser);
-        return new RedirectView("/userprofile");
-    }
-
-//    @GetMapping("/feed")
-//    public String getAll(Model m, Principal p) {
+//    @PostMapping("/userprofile/{id}")
+//    public RedirectView getFollow(Principal p, @RequestParam(name = "id") Integer id) {
 //        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+//        List<ApplicationUserModel> followedUser = applicationUserRepository.findFollowedUser(currentUser.getId());
 //
-//        ApplicationUserModel allInfo = applicationUserRepository.findAllById(currentUser.getUser_Id());
 //
+//
+//        System.out.println(currentUser.getFollowing());
+//        if (!currentUser.getFollowing()
+//                        .contains(followedUser) && currentUser.getId() != followedUser.getId()) {
+//
+//            currentUser.getFollowing()
+//                       .add(followedUser);
+//            applicationUserRepository.save(currentUser);
+//        }
+//        if (!currentUser.getFollowing()
+//                        .isEmpty()) {
+//            currentUser.getFollowing()
+//                       .clear();
+//
+//        }
+//        return new RedirectView("/userprofile");
 //    }
+
+    @GetMapping("/feed")
+    public String getAllFollowedUser(Model m, Principal p) {
+        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        List<ApplicationUserModel> allFollowedUser = applicationUserRepository.findFollowedUser(currentUser.getId());
+
+ArrayList<PostModel> array = new ArrayList<PostModel>();
+for(ApplicationUserModel applicationUserModel: allFollowedUser){
+    array.addAll(applicationUserModel.getPostModel());
+
+}
+        System.out.println("error" + allFollowedUser);
+        System.out.println("Arr" + array);
+
+        m.addAttribute("following", array);
+        return "feed.html";
+    }
 
 }
