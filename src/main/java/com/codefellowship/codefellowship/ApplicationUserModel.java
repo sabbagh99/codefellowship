@@ -6,6 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 public class ApplicationUserModel implements UserDetails {
@@ -19,27 +22,20 @@ public class ApplicationUserModel implements UserDetails {
     private String lastName;
     private String firstName;
     private String dateOfBirth;
-    @OneToMany (mappedBy = "applicationUserModel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "applicationUserModel", cascade = CascadeType.ALL)
     private List<PostModel> postModel;
 
+    @GeneratedValue(strategy= GenerationType.TABLE)
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="Following",
-            joinColumns=@JoinColumn(name="user_Id"),
-            inverseJoinColumns=@JoinColumn(name="follow_Id")
-    )
-    private List<ApplicationUserModel> user_Id;
+    @JoinTable(name = "Following",
+            joinColumns = @JoinColumn(name = "user_Id"),
+            inverseJoinColumns = @JoinColumn(name = "follow_Id"))
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="Following",
-            joinColumns=@JoinColumn(name="follow_Id"),
-            inverseJoinColumns=@JoinColumn(name="user_Id")
-    )
-    private List<ApplicationUserModel> follow_Id;
-
-
+    private List<ApplicationUserModel> following;
 
     public ApplicationUserModel() {
     }
+
     public ApplicationUserModel(String username, String password, String bio, String dateOfBirth, String lastName, String firstName) {
         this.username = username;
         this.password = password;
@@ -48,35 +44,22 @@ public class ApplicationUserModel implements UserDetails {
         this.lastName = lastName;
         this.firstName = firstName;
     }
-    public ApplicationUserModel(String username, String password, String bio, String dateOfBirth, String lastName, String firstName,List<PostModel> postModel) {
-        this.username = username;
-        this.password = password;
-        this.bio = bio;
-        this.dateOfBirth = dateOfBirth;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.postModel= postModel;
+
+    public List<ApplicationUserModel> getFollowing() {
+        return following;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setFollowing(List<ApplicationUserModel> following) {
+        this.following = following;
     }
 
-    public List<ApplicationUserModel> getUser_Id() {
-        return user_Id;
-    }
-
-    public void setUser_Id(List<ApplicationUserModel> user_Id) {
-        this.user_Id = user_Id;
-    }
-
-    public List<ApplicationUserModel> getFollow_Id() {
-        return follow_Id;
-    }
-
-    public void setFollow_Id(List<ApplicationUserModel> follow_Id) {
-        this.follow_Id = follow_Id;
-    }
+//    public Set<ApplicationUserModel> getFollowing() {
+//        return following;
+//    }
+//
+//    public void setFollowing(java.util.Set<ApplicationUserModel> following) {
+//        this.following = following;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -88,9 +71,17 @@ public class ApplicationUserModel implements UserDetails {
         return this.password;
     }
 
+    public void ListPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String getUsername() {
         return this.username;
+    }
+
+    public void ListUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -113,24 +104,19 @@ public class ApplicationUserModel implements UserDetails {
         return true;
     }
 
-
     public Integer getId() {
         return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void ListId(Integer id) {
+        this.id = id;
     }
 
     public String getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
+    public void ListBio(String bio) {
         this.bio = bio;
     }
 
@@ -138,7 +124,7 @@ public class ApplicationUserModel implements UserDetails {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void ListDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -146,7 +132,7 @@ public class ApplicationUserModel implements UserDetails {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void ListLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -154,7 +140,7 @@ public class ApplicationUserModel implements UserDetails {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void ListFirstName(String firstName) {
         this.firstName = firstName;
     }
 

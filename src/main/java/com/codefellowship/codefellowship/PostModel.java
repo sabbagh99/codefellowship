@@ -38,4 +38,13 @@ private ApplicationUserModel applicationUserModel;
     public void setApplicationUserModel(ApplicationUserModel applicationUserModel) {
         this.applicationUserModel = applicationUserModel;
     }
+
+    @Override
+    public String toString() {
+        return "PostModel{" +
+                "id=" + id +
+                ", body='" + body + '\'' +
+                ", applicationUserModel=" + applicationUserModel +
+                '}';
+    }
 }
