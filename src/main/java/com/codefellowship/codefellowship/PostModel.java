@@ -1,5 +1,7 @@
 package com.codefellowship.codefellowship;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class PostModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String body;
+    @JsonBackReference
     @ManyToOne
 private ApplicationUserModel applicationUserModel;
 

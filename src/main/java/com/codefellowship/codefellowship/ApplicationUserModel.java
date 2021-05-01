@@ -1,5 +1,7 @@
 package com.codefellowship.codefellowship;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -22,6 +24,7 @@ public class ApplicationUserModel implements UserDetails {
     private String lastName;
     private String firstName;
     private String dateOfBirth;
+    @JsonManagedReference
     @OneToMany(mappedBy = "applicationUserModel", cascade = CascadeType.ALL)
     private List<PostModel> postModel;
 
@@ -160,4 +163,5 @@ public class ApplicationUserModel implements UserDetails {
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
     }
+
 }

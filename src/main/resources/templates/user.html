@@ -1,57 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Profile page</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Profile page </title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <style>
+    .profile-head {
+    transform: translateY(5rem)
+}
 
+.cover {
+    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+
+    </style>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript'
+            src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript'></script>
 </head>
-<body>
+<body oncontextmenu='return false' class='snippet-body'>
 <div th:insert="header :: header">...</div>
-
-<h2>Welcome to <span th:text="${user.username}"/>'s profile ....</h2>
-
-<form action="/userprofile/{id}" method="post">
-    <input name="id" type="text" th:value="${user.id}">
-
-    <input class="button" type="submit" value="Follow">
-</form>
-<img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
-
-<div style="display: flex;">
-    <h2> First name : <h2 th:text="${user.firstName}"></h2></h2>
-</div>
-<div style="display: flex;">
-    <h2>Last name : <h2 th:text="${user.lastName}"></h2></h2>
-</div>
-<div style="display: flex;">
-    <h2> Bio : <h2 th:text="${user.bio}"></h2></h2>
-</div>
-<div style="display: flex;">
-    <h2> Data of birth : <h2 th:text="${user.dateOfBirth}"></h2></h2>
-</div>
-<!--<h2> Bio : <h2 th:text="${user}"></h2></h2>-->
-<!--th:if="${isAllowedToEdit == true}"-->
-<form action="/userprofile" method="POST">
-
-    <h1>write a post </h1>
-
-    <h4>body<span>*</span></h4>
-    <input type='text' name="body">
-    <input name="id" type="hidden" th:value="${user.id}">
-
-    <input class="button" type="submit" value="Post">
+<h5 style="
+    text-align: end;
+    position: relative;
+    bottom: 40px;
+    color: white;
+"  th:text="${user.username}"></h5>
 
 
-</form>
-<h2> All posts </h2>
+<div class="row py-5 px-4">
+    <div class="col-md-5 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><img
+                            src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" alt="..."
+                            width="130" class="rounded mb-2 img-thumbnail"><a th:if="${follow == user.id}" href="#"
+                                                                              class="btn btn-outline-dark btn-sm btn-block"
+                                                                              style="position: relative;top: 31px;">Edit
+                        profile</a><a
+                                      style="position: relative;left: 145px;">
 
-<div  th:each="post:${posts}">
+                        <form th:if="${follow != user.id}" action="/userprofile/{id}" method="post">
+                            <input name="id" type="hidden" th:value="${user.id}">
+                            <input class="btn btn-outline-dark btn-sm btn-block" type="submit" value="Follow" >
+                        </form>
+                    </a>
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0" style="position: relative;top: -47px;"><span th:text="${user.username}"/>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i
+                            class="fas fa-image mr-1"></i>Posts</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i
+                            class="fas fa-user mr-1"></i>Followers</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i
+                            class="fas fa-user mr-1"></i>Following</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0">About</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
 
 
-<h2 th:text="${post.body}"></h2>
+                    <div class="font-italic" style="
+    display: flex;">
+                        <h2> First name : <h2 th:text="${user.firstName}"></h2></h2>
+                    </div>
+                    <div class="font-italic" style="
+    display: flex;">
+                        <h2>Last name : <h2 th:text="${user.lastName}"></h2></h2>
+                    </div>
+                    <div class="font-italic" style="
+    display: flex;">
+                        <h2> Bio : <h2 th:text="${user.bio}"></h2></h2>
+                    </div>
+                    <div class="font-italic" style="
+    display: flex;">
+                        <h2> Data of birth : <h2 th:text="${user.dateOfBirth}"></h2></h2>
+                    </div>
+                </div>
+            </div>
 
 
+            <div class="py-4 px-4">
+                <form th:if="${follow == user.id}" action="/userprofile" method="POST">
+
+                    <h1>write a post </h1>
+
+                    <input type='text' name="body">
+                    <input name="id" type="hidden" th:value="${user.id}">
+
+                    <input class="button" type="submit" value="Post">
+
+
+                </form>
+
+                <h2> All posts </h2>
+
+                <div   th:each="post:${posts}">
+
+
+                    <h2 th:text="${post.body}"></h2>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
