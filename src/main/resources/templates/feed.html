@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Feed</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+
 </head>
 <body>
 
-<h1>hi</h1>
-<div  th:each="followings:${following}">
+<div th:insert="header :: header">...</div>
 
+<div style="    display: flex;" th:each="followings:${following}">
+    <h2 th:text="${followings.applicationUserModel.username}+''"></h2>
+    <h2> Post<h2 th:text=" '  '+${followings.body}"></h2></h2>
 
-    <h2 th:text="${followings}"></h2>
-
-
+    <h2><a th:href="@{'/userprofile/'+${followings.applicationUserModel.getId()}}"> Profile </a></h2>
 </div>
 </body>
 </html>

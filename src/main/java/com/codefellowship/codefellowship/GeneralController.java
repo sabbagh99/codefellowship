@@ -11,9 +11,9 @@ import java.security.Principal;
 public class GeneralController {
 
 
-    @GetMapping("/")
+    @GetMapping
     public String splashPage(Principal p, Model m) {
-        m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
-       return "splashPage.html";
+//        m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
+       return "home_page.html";
     }
 }

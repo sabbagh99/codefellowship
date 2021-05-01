@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ApplicationUserController<T> {
@@ -48,11 +49,17 @@ public class ApplicationUserController<T> {
         Authentication authentication = new UsernamePasswordAuthenticationToken(newUser, null, new ArrayList<>());
         SecurityContextHolder.getContext()
                              .setAuthentication(authentication);
-        return new RedirectView("/login");
+        return new RedirectView("/userprofile");
     }
 
     @GetMapping("/userprofile")
     public String getUserProfilePage(Principal p, Model m) {
+        String loggedInUserName = p.getName();
+        ApplicationUserModel loggedInUser = applicationUserRepository.findByUsername(loggedInUserName);
+        List<PostModel> requiredPostTwo = postReppsitory.findAllByApplicationUserModelId(loggedInUser.getId());
+        m.addAttribute("posts", requiredPostTwo);
+        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken)p).getPrincipal();
+        m.addAttribute("follow",loggedInUser.getId());
         m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
         return "user.html";
     }
@@ -74,21 +81,21 @@ public class ApplicationUserController<T> {
         return "user.html";
     }
 
-//    @PostMapping("/userprofile/{id}")
+//        @PostMapping("/userprofile/{id}")
 //    public RedirectView getFollow(Principal p, @RequestParam(name = "id") Integer id) {
-//        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
-//        List<ApplicationUserModel> followedUser = applicationUserRepository.findFollowedUser(currentUser.getId());
+//        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken)p).getPrincipal();
+//        ApplicationUserModel followedUser = applicationUserRepository.findUser(currentUser.getId());
 //
 //
 //
 //        System.out.println(currentUser.getFollowing());
-//        if (!currentUser.getFollowing()
-//                        .contains(followedUser) && currentUser.getId() != followedUser.getId()) {
+////        if (!currentUser.getFollowing()
+////                        .contains(followedUser) && currentUser.getId() != followedUser.getId()) {
 //
 //            currentUser.getFollowing()
 //                       .add(followedUser);
 //            applicationUserRepository.save(currentUser);
-//        }
+////        }
 //        if (!currentUser.getFollowing()
 //                        .isEmpty()) {
 //            currentUser.getFollowing()
@@ -97,21 +104,41 @@ public class ApplicationUserController<T> {
 //        }
 //        return new RedirectView("/userprofile");
 //    }
+    @PostMapping("/userprofile/{id}")
+    public RedirectView getFollow(Principal p, @RequestParam(name = "id") Integer id) {
+        ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+
+//        if (!currentUser.getFollowing()
+//                        .contains(currentUser.getId()) && currentUser.getId() != id) {
+        System.out.println(currentUser.getId()+""+id);
+            applicationUserRepository.insert(currentUser.getId(), id);
+
+//            applicationUserRepository.save(currentUser);
+//        }
+//        if (!currentUser.getFollowing()
+//                        .isEmpty()) {
+//            currentUser.getFollowing()
+//                       .clear();
+//
+//        }
+        return new RedirectView("/userprofile");
+
+    }
+
 
     @GetMapping("/feed")
     public String getAllFollowedUser(Model m, Principal p) {
         ApplicationUserModel currentUser = (ApplicationUserModel) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
-        List<ApplicationUserModel> allFollowedUser = applicationUserRepository.findFollowedUser(currentUser.getId());
+        List<PostModel> allFollowedUser = postReppsitory.findFollowedUser(currentUser.getId());
+//
+//        ArrayList<String> array = new ArrayList<>();
+//        for (PostModel postModel : allFollowedUser) {
+//            array.addAll(postModel.getBody());
+//
+//        }
+//        System.out.println("error" + allFollowedUser);
 
-ArrayList<PostModel> array = new ArrayList<PostModel>();
-for(ApplicationUserModel applicationUserModel: allFollowedUser){
-    array.addAll(applicationUserModel.getPostModel());
-
-}
-        System.out.println("error" + allFollowedUser);
-        System.out.println("Arr" + array);
-
-        m.addAttribute("following", array);
+        m.addAttribute("following", allFollowedUser);
         return "feed.html";
     }
 
