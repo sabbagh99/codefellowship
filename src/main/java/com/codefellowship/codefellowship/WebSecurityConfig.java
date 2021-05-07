@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf()
             .disable()
             .authorizeRequests()
-            .antMatchers("/login", "/signup","/**.css","/static/**/**","/resources/**")
+            .antMatchers("/","/login", "/signup","/**.css","**/static/**/**","/resources/**")
             .permitAll()
             .anyRequest()
             .authenticated()
@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
             .loginPage("/login")
             .loginProcessingUrl("/perform_login")
-            .defaultSuccessUrl("/", true)
+            .defaultSuccessUrl("/")
             .failureUrl("/error")
             .and()
             .logout()
@@ -54,10 +54,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/resources/**", "/static/**","/webjars/**");
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                .ignoring()
+//                .antMatchers("/resources/**", "/static/**","/webjars/**");
+//    }
 }

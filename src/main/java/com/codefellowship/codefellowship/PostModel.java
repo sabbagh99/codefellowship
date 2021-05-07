@@ -1,8 +1,10 @@
 package com.codefellowship.codefellowship;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class PostModel {
@@ -10,6 +12,10 @@ public class PostModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String body;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createdAt")
+    private Date createdAt;
     @JsonBackReference
     @ManyToOne
 private ApplicationUserModel applicationUserModel;
@@ -17,9 +23,10 @@ private ApplicationUserModel applicationUserModel;
     public PostModel() {
     }
 
-    public PostModel(String body, ApplicationUserModel applicationUser) {
+    public PostModel(String body, Date createdAt, ApplicationUserModel applicationUserModel) {
         this.body = body;
-        this.applicationUserModel = applicationUser;
+        this.createdAt = createdAt;
+        this.applicationUserModel = applicationUserModel;
     }
 
     public String getBody() {
@@ -40,6 +47,14 @@ private ApplicationUserModel applicationUserModel;
 
     public void setApplicationUserModel(ApplicationUserModel applicationUserModel) {
         this.applicationUserModel = applicationUserModel;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override

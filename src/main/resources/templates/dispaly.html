@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Display profiles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css "/>
+    <link th:rel="stylesheet" href="/displayProfiles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    </div>
+        <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/js.js}"></script>
+</head>
+<body>
+<div th:insert="header :: header">...</div>
+<h5 style="
+    text-align: end;
+    position: relative;
+    bottom: 40px;
+    color: white;
+        right: 40px;
+
+"  th:text="${currentUser.username}"></h5>
+<div class="container py-5">
+    <div class="row text-center text-white">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4">All users</h1>
+            <p class="lead mb-0">people you may know </p>
+        </div>
+    </div>
+</div><!-- End -->
+<div class="container">
+    <div class="row text-center">
+        <!-- Team item -->
+        <div th:each="user :${users}" class="col-xl-3 col-sm-6 mb-5">
+            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0" th:text="${user.firstName}+ ' ' + ${user.lastName} "></h5>
+
+                <a th:href="@{/userprofile/}+${user.getId()}" class="btn btn-outline-dark btn-sm btn-block"> visit Profile</a>
+            </div>
+        </div><!-- End -->
+    </div>
+</div>
+</body>
+</html>

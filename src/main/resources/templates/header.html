@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,17 +18,21 @@
                 <li class="nav-item ">
                     <a class="nav-link"  href="/userprofile">My profile</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link"  href="/signup">Sign Up</a>
+                <a class="nav-link"  href="/feed">Feed</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/login">login</a>
+                <a class="nav-link"  href="/displayprofiles">All users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/perform_logout">logout</a>
+                    <a class="nav-link"  href="/signup" sec:authorize="!isAuthenticated()">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/feed">Feed</a>
+                    <a class="nav-link"  href="/login" sec:authorize="!isAuthenticated()">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/perform_logout" sec:authorize="isAuthenticated()">logout</a>
                 </li>
             </ul>
             <span class="navbar-text">

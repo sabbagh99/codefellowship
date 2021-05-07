@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -17,6 +17,7 @@
 }
 
 
+
     </style>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type='text/javascript'
@@ -30,7 +31,9 @@
     position: relative;
     bottom: 40px;
     color: white;
-"  th:text="${user.username}"></h5>
+        right: 40px;
+
+" th:text="${currentUser.username}"></h5>
 
 
 <div class="row py-5 px-4">
@@ -45,11 +48,11 @@
                                                                               class="btn btn-outline-dark btn-sm btn-block"
                                                                               style="position: relative;top: 31px;">Edit
                         profile</a><a
-                                      style="position: relative;left: 145px;">
+                            style="position: relative;left: 145px;">
 
                         <form th:if="${follow != user.id}" action="/userprofile/{id}" method="post">
                             <input name="id" type="hidden" th:value="${user.id}">
-                            <input class="btn btn-outline-dark btn-sm btn-block" type="submit" value="Follow" >
+                            <input class="btn btn-outline-dark btn-sm btn-block" type="submit" value="Follow">
                         </form>
                     </a>
                     </div>
@@ -115,10 +118,10 @@
 
                 <h2> All posts </h2>
 
-                <div   th:each="post:${posts}">
+                <div th:each="post:${posts}">
 
 
-                    <h2 th:text="${post.body}"></h2>
+                    <h2 th:text="${post.body}+' '+@{ createdAt: }+ ' '+${post.createdAt}"></h2>
 
 
                 </div>
