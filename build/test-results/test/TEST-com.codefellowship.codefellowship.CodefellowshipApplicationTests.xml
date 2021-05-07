@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.codefellowship.codefellowship.CodefellowshipApplicationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-07T06:41:24" hostname="sabbagh99" time="0.454">
+  <properties/>
+  <testcase name="testLogin()" classname="com.codefellowship.codefellowship.CodefellowshipApplicationTests" time="0.339"/>
+  <testcase name="testHome()" classname="com.codefellowship.codefellowship.CodefellowshipApplicationTests" time="0.024"/>
+  <testcase name="testUser()" classname="com.codefellowship.codefellowship.CodefellowshipApplicationTests" time="0.051"/>
+  <testcase name="contextLoads()" classname="com.codefellowship.codefellowship.CodefellowshipApplicationTests" time="0.004"/>
+  <testcase name="testSignIn()" classname="com.codefellowship.codefellowship.CodefellowshipApplicationTests" time="0.03"/>
+  <system-out><![CDATA[09:41:20.141 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+09:41:20.151 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+09:41:20.180 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+09:41:20.189 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests], using SpringBootContextLoader
+09:41:20.192 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]: class path resource [com/codefellowship/codefellowship/CodefellowshipApplicationTests-context.xml] does not exist
+09:41:20.192 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]: class path resource [com/codefellowship/codefellowship/CodefellowshipApplicationTestsContext.groovy] does not exist
+09:41:20.193 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+09:41:20.193 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]: CodefellowshipApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:41:20.241 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]
+09:41:20.304 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/sabbagh99/Desktop/ASAC/code-401/codefellowship/build/classes/java/main/com/codefellowship/codefellowship/CodefellowshipApplication.class]
+09:41:20.310 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.codefellowship.codefellowship.CodefellowshipApplication for test class com.codefellowship.codefellowship.CodefellowshipApplicationTests
+09:41:20.392 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.codefellowship.codefellowship.CodefellowshipApplicationTests]: using defaults.
+09:41:20.393 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+09:41:20.407 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5d21c9e1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@86a7f74, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@9fe725b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@32268080, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@611b39e4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3ad16b6c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4047bac7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@46e310cf, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@7e0fc5ee, org.springframework.test.context.event.EventPublishingTestExecutionListener@4fb45b48, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@325851fb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6ce34a17, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6c43d2d0, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@140ba0b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@71e7f451, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@722ab88, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@75053cee]
+09:41:20.410 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@1bb5cf7e testClass = CodefellowshipApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@b663bce testClass = CodefellowshipApplicationTests, locations = '{}', classes = '{class com.codefellowship.codefellowship.CodefellowshipApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@7411adaf, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3a5fe913, [ImportsContextCustomizer@7988cfde key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@701b84d3, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5c45d2eb, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@333f8bad, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@61db1881], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+09:41:20.441 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.5)
+
+2021-05-07 09:41:20.711  INFO 53972 --- [    Test worker] c.c.c.CodefellowshipApplicationTests     : Starting CodefellowshipApplicationTests using Java 1.8.0_281 on sabbagh99 with PID 53972 (started by sabbagh99 in /home/sabbagh99/Desktop/ASAC/code-401/codefellowship)
+2021-05-07 09:41:20.713  INFO 53972 --- [    Test worker] c.c.c.CodefellowshipApplicationTests     : No active profile set, falling back to default profiles: default
+2021-05-07 09:41:21.248  INFO 53972 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-07 09:41:21.300  INFO 53972 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 2 JPA repository interfaces.
+2021-05-07 09:41:21.913  INFO 53972 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-07 09:41:21.958  INFO 53972 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.30.Final
+2021-05-07 09:41:22.140  INFO 53972 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-07 09:41:22.241  INFO 53972 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-07 09:41:22.315  INFO 53972 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-07 09:41:22.341  INFO 53972 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-05-07 09:41:22.903  INFO 53972 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-07 09:41:22.910  INFO 53972 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-07 09:41:23.373  WARN 53972 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-07 09:41:23.550  INFO 53972 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/resources/**'] with []
+2021-05-07 09:41:23.550  INFO 53972 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/static/**'] with []
+2021-05-07 09:41:23.550  INFO 53972 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2021-05-07 09:41:23.655  INFO 53972 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7da1db74, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d1fad22, org.springframework.security.web.header.HeaderWriterFilter@da50f8c, org.springframework.security.web.authentication.logout.LogoutFilter@1ae5643, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a495ac3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7446a3c2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@60f16f6b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@233d156e, org.springframework.security.web.session.SessionManagementFilter@644c5c33, org.springframework.security.web.access.ExceptionTranslationFilter@141565c6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@606c7b1]
+2021-05-07 09:41:24.024  INFO 53972 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-07 09:41:24.646  INFO 53972 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-05-07 09:41:24.647  INFO 53972 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-05-07 09:41:24.648  INFO 53972 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2021-05-07 09:41:24.671  INFO 53972 --- [    Test worker] c.c.c.CodefellowshipApplicationTests     : Started CodefellowshipApplicationTests in 4.225 seconds (JVM running for 5.147)
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /login
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.codefellowship.codefellowship.ApplicationUserController
+           Method = com.codefellowship.codefellowship.ApplicationUserController#getLoginPage()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = login.html
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+
+
+</head>
+
+
+<body>
+
+<div><div>
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item ">
+                    <a class="nav-link"  href="/">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link"  href="/userprofile">My profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="/feed">Feed</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="/displayprofiles">All users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/login">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/perform_logout">logout</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+    </span>
+        </div>
+    </nav>
+
+</div></div>
+
+<div class="testbox">
+  <form action="perform_login" method='POST'>
+
+    <h1>Login in CodeFellowship</h1>
+
+    <h4>User name<span>*</span></h4>
+    <input type='text' name='username' value=''>
+
+    <h4>password<span>*</span></h4>
+    <input type='password' name='password' />
+
+
+    <div class="btn-block">
+
+      <input class="button" type="submit" value="Login">
+
+    </div>
+  </form>
+</div>
+</body>
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.codefellowship.codefellowship.GeneralController
+           Method = com.codefellowship.codefellowship.GeneralController#splashPage()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = home_page.html
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Home page</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/owl.carousel//owl.carousel.min.css" rel="stylesheet">
+    <link href="/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header-transparent">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <a href="index.html"><img src="/img/logo.png" alt=""></a>
+            <!-- Uncomment below if you prefer to use a text logo -->
+            <!--<h1><a href="#hero">Regna</a></h1>-->
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="/userprofile">My profile</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">login</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1>Welcome to Code fellows Ship</h1>
+        <h2>Start your coding  journey with  Code fellows ;] </h2>
+        <a href="http://localhost:8080/signup" class="btn-get-started">Get Started</a>
+    </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/vendor/php-email-form/validate.js"></script>
+    <script src="/vendor/counterup/counterup.min.js"></script>
+    <script src="/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/vendor/superfish/superfish.min.js"></script>
+    <script src="/vendor/hoverIntent/hoverIntent.js"></script>
+    <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/vendor/venobox/venobox.min.js"></script>
+    <script src="/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/js/main.js"></script>
+</main>>
+</body>
+
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /signup
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.codefellowship.codefellowship.ApplicationUserController
+           Method = com.codefellowship.codefellowship.ApplicationUserController#getSignUpPage()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = signup.html
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+
+
+</head>
+<body>
+<div><div>
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item ">
+                    <a class="nav-link"  href="/">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link"  href="/userprofile">My profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="/feed">Feed</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="/displayprofiles">All users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/login">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="/perform_logout">logout</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+    </span>
+        </div>
+    </nav>
+
+</div></div>
+
+<div class="testbox">
+    <form method="POST" action="/signup">
+
+        <h1>Signup in CodeFellowship</h1>
+
+        <h4>User name<span>*</span></h4>
+        <input id="username" name="username" type="text">
+
+        <h4>password<span>*</span></h4>
+        <input id="password" name="password" type="password">
+
+        <h4>First Name<span>*</span></h4>
+        <input type="text" name="firstName" id="firstName"/>
+
+        <h4>Last Name<span>*</span></h4>
+        <input type="text" name="lastName" id="lastName"/>
+
+        <h4>Date of birth<span>*</span></h4>
+        <input type="date" name="dateOfBirth" id="dateOfBirth"/>
+
+
+        <h4>Bio<span>*</span></h4>
+        <input type="text" name="bio" id="bio"/>
+
+        <div class="btn-block">
+
+            <input class="button" type="submit" value="Sign up">
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

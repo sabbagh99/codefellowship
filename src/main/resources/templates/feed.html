@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>Feed</title>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
-
 </head>
 <body>
-
 <div th:insert="header :: header">...</div>
+<h5 style="
+    text-align: end;
+    position: relative;
+    bottom: 40px;
+    color: white;
+        right: 40px;
 
+"  th:text="${currentUser.username}"></h5>
 <div style="    display: flex;" th:each="followings:${following}">
-    <h2 th:text="${followings.applicationUserModel.username}+''"></h2>
-    <h2> Post<h2 th:text=" '  '+${followings.body}"></h2></h2>
-
-    <h2><a th:href="@{'/userprofile/'+${followings.applicationUserModel.getId()}}"> Profile </a></h2>
+    <h2 th:text="${followings.applicationUserModel.username}+' '+@{post}+' '+${followings.body}"></h2>
+    <br>
+    <h2><a th:href="@{/userprofile/}+${followings.applicationUserModel.getId()}"> Profile </a> </h2>
 </div>
 </body>
 </html>

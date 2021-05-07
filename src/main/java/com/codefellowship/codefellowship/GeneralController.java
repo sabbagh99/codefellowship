@@ -12,8 +12,7 @@ public class GeneralController {
 
 
     @GetMapping
-    public String splashPage(Principal p, Model m) {
-//        m.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
+    public String splashPage() {
        return "home_page.html";
     }
 }
